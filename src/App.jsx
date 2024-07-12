@@ -1,10 +1,10 @@
-import Board from "./components/Board";
-import Form from "./components/Form";
+import { Form, Board } from "./components";
 import { useGameContext } from "./context/GameContext";
 
 const App = () => {
   const { handleSpeed, speed, handleSwitch, pause, rows, cols } =
     useGameContext();
+
   return (
     <div className="flex flex-col items-center">
       <h1 className="text-2xl font-bold mb-4">Game of Life</h1>

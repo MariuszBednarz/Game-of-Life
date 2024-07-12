@@ -1,5 +1,6 @@
 import React, { useEffect } from "react";
 import Cell from "./Cell";
+
 import { useGameContext } from "../context/GameContext";
 
 const Board = () => {

@@ -57,7 +57,6 @@ export const GameProvider: React.FC<GameProviderProps> = ({ children }) => {
     let newBoard = JSON.parse(JSON.stringify(board));
     newBoard[row][col] = !newBoard[row][col];
     setBoard(newBoard);
-    console.log(newBoard);
   };
 
   const clearBoard = () => {
@@ -108,15 +107,15 @@ export const GameProvider: React.FC<GameProviderProps> = ({ children }) => {
   };
 
   const createFigure = (setup) => {
-    const newBoard = Array(30)
+    const figureBoard = Array(30)
       .fill(null)
       .map(() => Array(50).fill(false));
     setup.forEach(([x, y]) => {
       if (x < 30 && y < 50) {
-        newBoard[x][y] = true;
+        figureBoard[x][y] = true;
       }
     });
-    setBoard(newBoard);
+    setBoard(figureBoard);
   };
 
   const value: GameContextType = {
@@ -146,7 +145,7 @@ export const useGameContext = (): GameContextType => {
   const context = useContext(GameContext);
 
   if (!context) {
-    throw new Error("useGameContext must be used within a CounterProvider");
+    throw new Error("Kontekst musi być stosowany wewnątrz Providera");
   }
   return context;
 };

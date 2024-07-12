@@ -1,10 +1,9 @@
 import React from "react";
-import clsx from "clsx";
 
-import SpeedButton from "./SpeedButton";
-import SwitchButton from "./SwitchButton";
 import { useGameContext } from "../context/GameContext";
-import { gun, pulsar } from "../../../setups";
+
+import { SpeedButton, SwitchButton, FigureButton } from "./";
+import { gun, pulsar } from "../../setups";
 
 const Form = () => {
   const { handleSpeed, speed, handleSwitch, pause, clearBoard, createFigure } =
@@ -40,30 +39,15 @@ const Form = () => {
       </div>
       <div>
         <SwitchButton handleSwitch={handleSwitch} pause={pause} />
-        <button
-          onClick={clearBoard}
-          className={clsx(
-            "w-48 h-10 m-4 text-white bg-sky-800 active:bg-sky-400"
-          )}
-        >
-          Wyczyść tablicę
-        </button>
-        <button
-          onClick={() => createFigure(gun)}
-          className={clsx(
-            "w-48 h-10 m-4 text-white bg-sky-800 active:bg-sky-400"
-          )}
-        >
-          utwórz Gosper Glider
-        </button>
-        <button
-          onClick={() => createFigure(pulsar)}
-          className={clsx(
-            "w-48 h-10 m-4 text-white bg-sky-800 active:bg-sky-400"
-          )}
-        >
-          utwórz Oscylator Pulsar
-        </button>
+        <FigureButton handler={clearBoard} text="Wyczyść tablicę" />
+        <FigureButton
+          handler={() => createFigure(gun)}
+          text="stwórz Glider gun"
+        />
+        <FigureButton
+          handler={() => createFigure(pulsar)}
+          text="stwórz Oscylator"
+        />
       </div>
     </div>
   );
